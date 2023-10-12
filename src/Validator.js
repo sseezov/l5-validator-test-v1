@@ -1,3 +1,4 @@
+/* eslint-disable class-methods-use-this */
 import ArraySchema from './ArraySchema.js';
 import NumberSchema from './NumberSchema.js';
 
