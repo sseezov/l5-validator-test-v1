@@ -1,0 +1,34 @@
+{
+  "name": "work",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "node --test"
+  },
+  "simple-git-hooks": {
+    "pre-push": "make lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sseezov/tst.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sseezov/tst/issues"
+  },
+  "homepage": "https://github.com/sseezov/tst#readme",
+  "dependencies": {
+    "@faker-js/faker": "^7.6.0",
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "eslint": "^8.40.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "npm-check-updates": "^16.10.11",
+    "simple-git-hooks": "^2.8.1"
+  }
+}
