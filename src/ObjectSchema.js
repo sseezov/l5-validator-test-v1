@@ -2,6 +2,7 @@ export default class ObjectSchema {
   validators = {};
 
   shape(fields) {
+    // eslint-disable-next-line
     Object.keys(fields).map((key) => this.validators[key] = fields[key]);
     return this;
   }
