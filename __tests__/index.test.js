@@ -47,3 +47,22 @@ test('task4', () => {
   assert.equal(schema2.isValid([]), false);
   assert.equal(schema2.isValid([1, 23, 4, 5]), false);
 });
+
+test('task5', () => {
+  const validator = new Validator();
+  const schema1 = validator.object().shape({
+    id: validator.number().odd(),
+    basket: validator.array().length(3),
+  });
+  const schema2 = validator.object().shape({
+    id: validator.number().even(),
+    basket: validator.array().length(1231233),
+  });
+
+  assert.equal(schema1.isValid({ id: 11, basket: ['potatos', 'tomatos', 'oranges'] }), true);
+  assert.equal(schema1.isValid({ id: 12, basket: ['potatos', 'tomatos', 'oranges'] }), false);
+  assert.equal(schema1.isValid({}), false);
+  assert.equal(schema2.isValid({ id: 11, basket: [] }), false);
+  assert.equal(schema2.isValid([1, 23, 4, 5]), false);
+  assert.equal(schema2.isValid(2), false);
+});
