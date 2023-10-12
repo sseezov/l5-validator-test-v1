@@ -48,17 +48,21 @@ test('task4', () => {
   assert.equal(schema2.isValid([1, 23, 4, 5]), false);
 });
 
-// test('task5', () => {
-//   const validator = new Validator();
-//   const schema = validator.object();
+test('task5', () => {
+  const validator = new Validator();
+  const schema1 = validator.object().shape({
+    id: validator.number().odd(),
+    basket: validator.array().length(3),
+  });
+  const schema2 = validator.object().shape({
+    id: validator.number().even(),
+    basket: validator.array().length(1231233),
+  });
 
-//   schema.shape({
-//     name: validator.string().length(5),
-//     age: validator.number().isEven(),
-//   });
-
-//   assert.equal(schema.isValid({ name: 'kolya', age: 100 }), true);
-//   assert.equal(schema.isValid({ name: 'maya', age: 2 }), false);
-//   assert.equal(schema.isValid({ name: 'anna', age: 3 }), false);
-//   assert.equal(schema.isValid({ name: 'sergey', age: 11136 }), true);
-// });s
+  assert.equal(schema1.isValid({ id: 11, basket: ['potatos', 'tomatos', 'oranges'] }), true);
+  assert.equal(schema1.isValid({ id: 12, basket: ['potatos', 'tomatos', 'oranges'] }), false);
+  assert.equal(schema1.isValid({}), false);
+  assert.equal(schema2.isValid({ id: 11, basket: [] }), false);
+  assert.equal(schema2.isValid([1, 23, 4, 5]), false);
+  assert.equal(schema2.isValid(2), false);
+});

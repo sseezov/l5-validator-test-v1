@@ -113,7 +113,6 @@ schema.isValid('Hexlet'); // false
 ```javascript
 const v = new Validator();
 const schema1 = v.array();
-
 schema1.isValid([1, 2]); // true
 
 const schema2 = v.array().length(4);
