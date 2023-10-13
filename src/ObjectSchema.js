@@ -13,7 +13,6 @@ export default class ObjectSchema {
       return false;
     }
 
-    const validations = keys.map((key) => this.validators[key].isValid(value[key]));
-    return !validations.includes(false);
+    return keys.every((key) => this.validators[key].isValid(value[key]));
   }
 }

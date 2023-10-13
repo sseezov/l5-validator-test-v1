@@ -2,8 +2,7 @@ export default class ArraySchema {
   validators = [(value) => Array.isArray(value)];
 
   isValid(value) {
-    const validations = this.validators.map((validator) => validator(value));
-    return !validations.includes(false);
+    return this.validators.every((validator) => validator(value) === true);
   }
 
   length(num) {

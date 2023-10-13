@@ -2,8 +2,7 @@ export default class NumberSchema {
   validators = [(value) => typeof value === 'number'];
 
   isValid(value) {
-    const validations = this.validators.map((validator) => validator(value));
-    return !validations.includes(false);
+    return this.validators.every((validator) => validator(value) === true);
   }
 
   even() {
