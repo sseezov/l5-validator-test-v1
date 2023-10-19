@@ -73,4 +73,5 @@ test('task5', () => {
   assert.equal(schema3.isValid({ id: 16, basket: ['apple', 'cucumber'], payment: ['10 dollars', '10 cents'] }), true);
   assert.equal(schema3.isValid({ id: 17, basket: ['apple', 'cucumber'], payment: ['10 dollars', '10 cents'] }), false);
   assert.equal(schema3.isValid({ id: 16, basket: ['apple'], payment: ['10 dollars', '10 cents'] }), false);
+  assert.equal(schema3.isValid({ id: 16, payment: ['10 dollars', '10 cents'] }), false);
 });
