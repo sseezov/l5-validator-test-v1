@@ -1,20 +1,20 @@
 class ArraySchema {
   constructor() {
-    this.value = null;
+    this.len = null;
   }
 
   isValid(data) {
     if (!Array.isArray(data)) {
       return false;
     }
-    if (this.value !== null && this.value !== data.length) {
+    if (this.len && data.length !== this.len) {
       return false;
     }
     return true;
   }
 
-  length(subLeng) {
-    this.value = subLeng;
+  length(newData) {
+    this.len = newData;
     return this;
   }
 }

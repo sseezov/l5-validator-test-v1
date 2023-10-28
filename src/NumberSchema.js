@@ -1,77 +1,30 @@
 class NumberSchema {
-  constructor(option) {
-    this.option = option || {};
+  constructor() {
+    this.iseven = false;
+    this.isodd = false;
   }
 
   isValid(data) {
-    const type = typeof data === 'number';
-    if (Object.hasOwn(this.option, 'even') && type) {
-      return data % 2 === 0;
+    if (typeof data !== 'number') {
+      return false;
     }
-    if (Object.hasOwn(this.option, 'odd') && type) {
-      return data % 2 !== 0;
+    if (this.iseven && data % 2 !== 0) {
+      return false;
     }
-    return type;
+    if (this.isodd && data % 2 === 0) {
+      return false;
+    }
+    return true;
   }
 
   even() {
-    return new NumberSchema({ even: true });
+    this.iseven = true;
+    return this;
   }
 
   odd() {
-    return new NumberSchema({ odd: true });
+    this.isodd = true;
+    return this;
   }
 }
 export default NumberSchema;
-
-// class Validator {
-//     constructor() {
-//       this.validations = [];
-//     }
-
-//     isValid(value) {
-//       return this.validations.every(validation => validation(value));
-//     }
-
-//     number() {
-//       const validator = new Validator();
-//       validator.validations.push(value => typeof value === 'number');
-
-//       validator.even = function() {
-//         this.validations.push(value => typeof value === 'number' && value % 2 === 0);
-//         return this;
-//       };
-
-//       validator.odd = function() {
-//         this.validations.push(value => typeof value === 'number' && value % 2 !== 0);
-//         return this;
-//       };
-
-//       return validator;
-//     }
-//   }
-
-// class NumberSchema {
-//     constructor(option) {
-//       this.option = option;
-//     }
-
-//     isValid(data) {
-//       const type = typeof data === 'number';
-//       if (this.option === 'even' && type) {
-//         return data % 2 === 0;
-//       }
-//       if (this.option === 'odd' && type) {
-//         return data % 2 !== 0;
-//       }
-//       return type;
-//     }
-
-//     even() {
-//       return new NumberSchema('even');
-//     }
-
-//     odd() {
-//       return new NumberSchema('odd');
-//     }
-//   }
