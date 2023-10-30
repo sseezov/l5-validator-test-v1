@@ -17,3 +17,5 @@ export default class ObjectSchema {
     return keys.every((key) => this.validators[key].isValid(value[key]));
   }
 }
+
+console.log();
